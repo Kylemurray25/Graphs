@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=WeightedGraph()
+comment1.params=e
+comment1.target=WeightedGraph(WeightedEdge[])
+comment2.params=n
+comment2.target=void\ completeGraph(int)
+comment3.params=n
+comment3.target=void\ completeGraphWeighted(int)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5
