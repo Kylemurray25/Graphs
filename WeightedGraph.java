@@ -81,20 +81,27 @@ public class WeightedGraph
         sortedEdges = edges;
         Collections.sort(sortedEdges, new EdgeSorter());
         
+        ArrayList<WeightedEdge> minSpanningTree = new ArrayList<WeightedEdge>();
         for (int i = 0; i < sortedEdges.size(); i++)
         {
-        
+         
+                if(!sortedEdges.get(i).createsCycle(minSpanningTree))
+                {
+                    minSpanningTree.add(sortedEdges.get(i));
+                }
+            
         }
-        
-        
-        
-        
-        
-        WeightedEdge[] e = sortedEdges.toArray(new WeightedEdge[sortedEdges.size()]);
 
-        
-        
-        WeightedGraph tree = new WeightedGraph(e);
-        return tree;
+        //doubles the minimum spanning tree 
+        ArrayList<WeightedEdge> dubMinSpanningTree = new ArrayList<WeightedEdge>();
+        for (int n = 0; n < minSpanningTree.size(); n++)
+        {
+            dubMinSpanningTree.add(minSpanningTree.get(n));
+            dubMinSpanningTree.add(minSpanningTree.get(n));
+        }
+        WeightedEdge[] dubTreeEdges = dubMinSpanningTree.toArray(new WeightedEdge[sortedEdges.size()]);
+
+        WeightedGraph dubtree = new WeightedGraph(dubTreeEdges);
+        return dubtree;
     }
 }
