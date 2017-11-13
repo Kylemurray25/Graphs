@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections;
 public class WeightedGraph 
 {
     private ArrayList<WeightedEdge> edges;
     public double weight;
-    
+
     public WeightedGraph()
     {
         weight = 0;
@@ -16,6 +17,10 @@ public class WeightedGraph
         edges = new ArrayList<WeightedEdge>();
         for( WeightedEdge ed : e){
             edges.add(ed);
+        }
+        for (int i = 0; i<edges.size(); i++)
+        {
+            weight += edges.get(i).getWeight();
         }
     }
 
@@ -38,7 +43,7 @@ public class WeightedGraph
         }
 
     }
-    
+
     public void completeGraphWeighted(int n)
     {
         edges = new ArrayList<WeightedEdge>();
@@ -67,6 +72,29 @@ public class WeightedGraph
         {
             edgesString += edges.get(i).toString();
         }
-        return "Total Graph Weight is " + weight + "The edges are " + edgesString + " "; 
+        return "Total Graph Weight is " + weight + "\n The edges are " + edgesString + " "; 
+    }
+
+    public WeightedGraph twoTree()
+    {
+        ArrayList<WeightedEdge> sortedEdges = new ArrayList<WeightedEdge>();
+        sortedEdges = edges;
+        Collections.sort(sortedEdges, new EdgeSorter());
+        
+        for (int i = 0; i < sortedEdges.size(); i++)
+        {
+        
+        }
+        
+        
+        
+        
+        
+        WeightedEdge[] e = sortedEdges.toArray(new WeightedEdge[sortedEdges.size()]);
+
+        
+        
+        WeightedGraph tree = new WeightedGraph(e);
+        return tree;
     }
 }
